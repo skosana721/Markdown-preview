@@ -35,10 +35,7 @@ function App() {
   const [markdown, setMarkdown] = useState({
     text: initialState,
   });
-  const handleChange = (e) => {
-    const { value } = e.target;
-    setMarkdown({ text: value });
-  };
+
   const markedValue = marked(markdown.text, { breaks: true });
   return (
     <div className="App">
@@ -50,7 +47,7 @@ function App() {
             type="textarea"
             name="text"
             id="editor"
-            onChange={handleChange}
+            onChange={(e) => setMarkdown({ text: e.target.value })}
             value={markdown.text}
           />
         </FormGroup>
